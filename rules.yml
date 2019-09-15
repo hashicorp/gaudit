@@ -1,0 +1,27 @@
+-
+  name: CircleCI Config
+  action: exists
+  resource: .circleci/config.yml
+-
+  name: TravisCI Config
+  action: not_exists
+  resource: .travis.yml
+-
+  name: README File
+  action: exists
+  resource: README.md
+-
+  name: License
+  action: exists
+  resource: LICENSE
+-
+  name: Copyright Notice
+  action: exists
+  resource: NOTICE.md
+  type: public
+-
+  name: Copyright Date
+  action: contains
+  resource: NOTICE.md
+  match: 2019
+  type: public
