@@ -16,7 +16,7 @@ gaudit
   gaudit details [filter] - Detail list of github repos
   gaudit analyze - Analyze rules against working repos
   gaudit results [--verbose] - Show results of analysis
-	gaudit append - Creates or updates the append file
+  gaudit append - Creates or updates the append file
   gaudit csv - Outputs to csv format
 ```
 
