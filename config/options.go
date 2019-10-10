@@ -8,6 +8,7 @@ type Options struct {
 	Organization string
 	Storage      string
 	Rules        string
+	Append       string
 	Debug        bool
 	Args         map[string]string
 }

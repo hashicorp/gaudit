@@ -44,6 +44,12 @@ func main() {
 		options.Rules = os.Getenv("GAUDIT_RULES")
 	}
 
+	// Append
+	options.Append = "append.yml"
+	if os.Getenv("GAUDIT_APPEND") != "" {
+		options.Append = os.Getenv("GAUDIT_APPEND")
+	}
+
 	// Debug
 	options.Debug = false
 	if os.Getenv("GAUDIT_DEBUG") == "true" {
@@ -90,6 +96,18 @@ func main() {
 	if match {
 		options.Args = values
 		commands.Results(options)
+	}
+
+	match, values = Command("append", os.Args)
+	if match {
+		options.Args = values
+		commands.Append(options)
+	}
+
+	match, values = Command("csv", os.Args)
+	if match {
+		options.Args = values
+		commands.CSV(options)
 	}
 
 	match, values = Command("csv", os.Args)

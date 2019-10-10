@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/mmcquillan/gaudit/analyze"
+	"github.com/mmcquillan/gaudit/appends"
 	"github.com/mmcquillan/gaudit/config"
 	"github.com/mmcquillan/gaudit/state"
 )
@@ -30,6 +31,13 @@ func CSV(options config.Options) {
 	}
 	sort.Strings(rulesList)
 
+	// get appends
+	appendList, err := appends.Load(options)
+	if err != nil {
+		fmt.Println("ERROR: " + err.Error())
+		return
+	}
+
 	// header
 	fmt.Print("\"ID\"")
 	fmt.Print(",\"Name\"")
@@ -49,6 +57,9 @@ func CSV(options config.Options) {
 	for _, r := range rulesList {
 		fmt.Print(",\"" + r + "\"")
 	}
+	fmt.Print(",\"Owner\"")
+	fmt.Print(",\"Category\"")
+	fmt.Print(",\"Notes\"")
 	fmt.Print("\n")
 
 	// output
@@ -75,6 +86,18 @@ func CSV(options config.Options) {
 					fmt.Print(",\"" + rule.Status + "\"")
 				}
 			}
+		}
+		match := false
+		for _, a := range appendList {
+			if a.Name == repo.FullName {
+				match = true
+				fmt.Print(",\"" + a.Owner + "\"")
+				fmt.Print(",\"" + a.Category + "\"")
+				fmt.Print(",\"" + a.Notes + "\"")
+			}
+		}
+		if !match {
+			fmt.Print(",\"\",\"\",\"\"")
 		}
 		fmt.Print("\n")
 	}

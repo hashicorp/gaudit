@@ -20,5 +20,6 @@ func Help(options config.Options) {
 	fmt.Println("  gaudit details [filter] - Detail list of github repos")
 	fmt.Println("  gaudit analyze - Analyze rules against working repos")
 	fmt.Println("  gaudit results [--verbose] - Show results of analysis")
+	fmt.Println("  gaudit append - Creates or updates the append file")
 	fmt.Println("  gaudit csv - Outputs to csv format")
 }
