@@ -5,6 +5,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/mmcquillan/gaudit/appends"
 	"github.com/mmcquillan/gaudit/config"
 	"github.com/mmcquillan/gaudit/state"
 )
@@ -15,6 +16,13 @@ func Details(options config.Options) {
 	audit, err := state.Load(options.Storage)
 	if err != nil {
 		fmt.Println("ERROR: " + err.Error())
+	}
+
+	// get appends
+	appendList, err := appends.Load(options)
+	if err != nil {
+		fmt.Println("ERROR: " + err.Error())
+		return
 	}
 
 	// filter
@@ -42,6 +50,13 @@ func Details(options config.Options) {
 			fmt.Println("  watchers:    " + strconv.Itoa(repo.Watchers))
 			fmt.Println("  size:        " + strconv.Itoa(repo.Size))
 			fmt.Println("  updated:     " + repo.Updated.Format("2006-01-02 15:04:05 MST"))
+			for _, a := range appendList {
+				if a.Name == repo.FullName {
+					fmt.Println("  owner:       " + a.Owner)
+					fmt.Println("  category:    " + a.Category)
+					fmt.Println("  notes:       " + a.Notes)
+				}
+			}
 			fmt.Print("\n")
 		}
 	}
