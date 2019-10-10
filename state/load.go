@@ -4,19 +4,17 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"os"
-
-	"github.com/mmcquillan/gaudit/config"
 )
 
-func Load(options config.Options) (audit Audit, err error) {
+func Load(state string) (audit Audit, err error) {
 
-	if _, err = os.Stat(options.Storage); err != nil {
+	if _, err = os.Stat(state); err != nil {
 		if os.IsNotExist(err) {
 			return audit, nil
 		}
 	}
 
-	b, err := ioutil.ReadFile(options.Storage)
+	b, err := ioutil.ReadFile(state)
 	if err != nil {
 		return audit, err
 	}

@@ -12,4 +12,4 @@
 *.out
 
 # project specific
-gaudit.state*
+audit.state*

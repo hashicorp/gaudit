@@ -18,21 +18,6 @@ func Update(options config.Options) {
 	}
 	fmt.Println("Refreshed")
 
-	// get previous audit
-	fmt.Print("Reloading prior state... ")
-	oldAudit, err := state.Load(options)
-	if err != nil {
-		fmt.Println("ERROR: " + err.Error())
-		return
-	}
-	fmt.Println("Loaded")
-
-	// loop over new for diff
-	fmt.Print("Comparing States...")
-	diffs := state.Compare(oldAudit, newAudit)
-	newAudit.Diffs = diffs
-	fmt.Println("Compared")
-
 	// backup
 	err = state.Backup(options)
 	if err != nil {

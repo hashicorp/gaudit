@@ -5,13 +5,11 @@ import (
 )
 
 type Audit struct {
-	Repos   map[string]Repo
-	Index   []string
-	State   map[string]string
-	Diffs   map[string]Diff
-	Results map[string]Result
-	Start   int64
-	End     int64
+	Repos     map[string]Repo
+	Index     []string
+	State     map[string]string
+	Results   map[string]Result
+	Timestamp int64
 }
 
 type Repo struct {
@@ -32,17 +30,6 @@ type Repo struct {
 	Watchers      int
 	Size          int
 	Updated       time.Time
-}
-
-type Diff struct {
-	State  string
-	Fields []Field
-}
-
-type Field struct {
-	Name string
-	Old  string
-	New  string
 }
 
 type Result struct {

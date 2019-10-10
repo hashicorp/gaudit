@@ -91,9 +91,12 @@ func Run(options config.Options, audit state.Audit, rules []Rule) error {
 							}
 						}
 					}
-
+				} else {
+					result.Rules = append(result.Rules, state.Rule{
+						Name:   rule.Name,
+						Status: "na",
+					})
 				}
-
 			}
 
 			// save the result for this repo

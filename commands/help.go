@@ -16,9 +16,9 @@ func Help(options config.Options) {
 	fmt.Println("")
 	fmt.Println("  gaudit update [--debug] - Update working list of github repos")
 	fmt.Println("  gaudit list - List of working github repos")
-	fmt.Println("  gaudit diff - Difference since last update")
+	fmt.Println("  gaudit diff <old> <new> - Difference since last update")
 	fmt.Println("  gaudit details [filter] - Detail list of github repos")
 	fmt.Println("  gaudit analyze - Analyze rules against working repos")
 	fmt.Println("  gaudit results [--verbose] - Show results of analysis")
-
+	fmt.Println("  gaudit csv - Outputs to csv format")
 }

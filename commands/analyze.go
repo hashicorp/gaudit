@@ -12,7 +12,7 @@ func Analyze(options config.Options) {
 
 	// get last audit
 	fmt.Print("Loading state... ")
-	audit, err := state.Load(options)
+	audit, err := state.Load(options.Storage)
 	if err != nil {
 		fmt.Println("ERROR: " + err.Error())
 	}

@@ -14,6 +14,7 @@ import (
 func Refresh(options config.Options) (audit Audit, err error) {
 
 	// init empty repos
+	audit.Timestamp = time.Now().Unix()
 	audit.Repos = make(map[string]Repo)
 
 	// github client
@@ -101,9 +102,6 @@ func Refresh(options config.Options) (audit Audit, err error) {
 		audit.Index = append(audit.Index, k)
 	}
 	sort.Strings(audit.Index)
-
-	// mark list time
-	audit.End = time.Now().Unix()
 
 	return audit, nil
 

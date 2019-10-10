@@ -12,7 +12,7 @@ import (
 func Details(options config.Options) {
 
 	// get last audit
-	audit, err := state.Load(options)
+	audit, err := state.Load(options.Storage)
 	if err != nil {
 		fmt.Println("ERROR: " + err.Error())
 	}
