@@ -13,3 +13,5 @@
 
 # project specific
 audit.state*
+*.yaml
+*.yml
