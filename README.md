@@ -75,5 +75,8 @@ Example:
 
 ### Releases
 
+v0.1.1
+- Added a Stats command
+
 v0.1.0
 - Initial release
