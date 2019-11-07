@@ -104,10 +104,10 @@ func main() {
 		commands.Append(options)
 	}
 
-	match, values = Command("csv", os.Args)
+	match, values = Command("stats", os.Args)
 	if match {
 		options.Args = values
-		commands.CSV(options)
+		commands.Stats(options)
 	}
 
 	match, values = Command("csv", os.Args)
