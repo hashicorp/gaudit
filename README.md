@@ -75,6 +75,11 @@ Example:
 
 ### Releases
 
+NEXT
+- Added rules results to details
+- Added rules results to stats
+- Updated diff to exclude size/updated date
+
 v0.1.1
 - Added a Stats command
 

@@ -128,6 +128,7 @@ func Compare(oldAudit Audit, newAudit Audit) (diffs map[string]Diff) {
 				})
 			}
 
+			/* Excluding Size/Updated for readability
 			if oldRepo.Size != newRepo.Size {
 				diff.Fields = append(diff.Fields, Field{
 					Name: "size",
@@ -143,6 +144,7 @@ func Compare(oldAudit Audit, newAudit Audit) (diffs map[string]Diff) {
 					New:  newRepo.Updated.Format("2006-01-02 15:04:05 MST"),
 				})
 			}
+			*/
 
 			if len(diff.Fields) == 0 {
 				diff.State = "="

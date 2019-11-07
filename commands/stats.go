@@ -3,6 +3,7 @@ package commands
 import (
 	"fmt"
 	"sort"
+	"strconv"
 	"strings"
 	"time"
 
@@ -112,6 +113,12 @@ func Stats(options config.Options) {
 			stats["updated_last_365"]++
 		}
 
+		for _, rule := range audit.Results[k].Rules {
+			if rule.Status == "success" {
+				stats[rule.Name] = stats[rule.Name] + 1
+			}
+		}
+
 		for _, a := range appendList {
 			if a.Name == repo.FullName {
 				// do something
@@ -122,6 +129,9 @@ func Stats(options config.Options) {
 
 	// print results
 	printStat("TOTAL", stats)
+	printStat("total_stars", stats)
+	printStat("total_forks", stats)
+	printStat("total_watchers", stats)
 	printStat("blank_description", stats)
 	printStat("blank_language", stats)
 	printStat("blank_topics", stats)
@@ -129,13 +139,13 @@ func Stats(options config.Options) {
 	printStat("archived", stats)
 	printStat("disabled", stats)
 	printStat("blank_license", stats)
-	printStat("total_stars", stats)
-	printStat("total_forks", stats)
-	printStat("total_watchers", stats)
 	printStat("updated_last_30", stats)
 	printStat("updated_last_60", stats)
 	printStat("updated_last_90", stats)
 	printStat("updated_last_365", stats)
+	for _, r := range rulesList {
+		printStat(r, stats)
+	}
 
 }
 
@@ -144,6 +154,7 @@ func printStat(stat string, stats map[string]int) {
 	fmt.Print(":")
 	fmt.Print(strings.Repeat(" ", 22-len(stat)))
 	fmt.Printf("%d", stats[stat])
+	fmt.Print(strings.Repeat(" ", 8-len(strconv.Itoa(stats[stat]))))
 	if stats[stat] < stats["TOTAL"] {
 		fmt.Printf("  (%5.2f %%)", (float64(stats[stat]) / float64(stats["TOTAL"]) * 100))
 	}

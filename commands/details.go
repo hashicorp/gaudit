@@ -2,9 +2,11 @@ package commands
 
 import (
 	"fmt"
+	"sort"
 	"strconv"
 	"strings"
 
+	"github.com/mmcquillan/gaudit/analyze"
 	"github.com/mmcquillan/gaudit/appends"
 	"github.com/mmcquillan/gaudit/config"
 	"github.com/mmcquillan/gaudit/state"
@@ -17,6 +19,17 @@ func Details(options config.Options) {
 	if err != nil {
 		fmt.Println("ERROR: " + err.Error())
 	}
+
+	// get rules
+	rules, err := analyze.Load(options)
+	if err != nil {
+		fmt.Println("ERROR: " + err.Error())
+	}
+	var rulesList []string
+	for _, rule := range rules {
+		rulesList = append(rulesList, rule.Name)
+	}
+	sort.Strings(rulesList)
 
 	// get appends
 	appendList, err := appends.Load(options)
@@ -50,6 +63,9 @@ func Details(options config.Options) {
 			fmt.Println("  watchers:    " + strconv.Itoa(repo.Watchers))
 			fmt.Println("  size:        " + strconv.Itoa(repo.Size))
 			fmt.Println("  updated:     " + repo.Updated.Format("2006-01-02 15:04:05 MST"))
+			for _, rule := range audit.Results[k].Rules {
+				fmt.Println("  rule:        " + rule.Name + "=" + rule.Status)
+			}
 			for _, a := range appendList {
 				if a.Name == repo.FullName {
 					fmt.Println("  owner:       " + a.Owner)
