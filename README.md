@@ -1,4 +1,4 @@
-# gaudit - Github Audit Tool
+# gaudit - Github Audit Tool for Organizations
 
 This is a command line tool to help you organize and analyze your github
 repositories in your organization. You can create some basic rules to look
