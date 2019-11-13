@@ -41,10 +41,12 @@ func Refresh(options config.Options) (audit Audit, err error) {
 
 		for _, r := range repos {
 
+			// debug output
 			if options.Debug {
 				log.Printf("\n\n%+v\n\n", r)
 			}
 
+			// cleanup some values
 			description := ""
 			if r.Description != nil {
 				description = *r.Description
@@ -60,6 +62,34 @@ func Refresh(options config.Options) (audit Audit, err error) {
 				license = *r.License.Name
 			}
 
+			// get collaborators
+			/*
+				users, _, err := client.Repositories.ListCollaborators(ctx, options.Organization, *r.Name, nil)
+				if err != nil {
+					return audit, err
+				}
+				if options.Debug {
+					log.Printf("USERS: %+v", users)
+				}
+			*/
+
+			// get teams
+			teams, _, err := client.Repositories.ListTeams(ctx, options.Organization, *r.Name, nil)
+			if err != nil {
+				log.Print("ERROR: " + err.Error())
+			}
+			if options.Debug {
+				log.Printf("\n\nTEAMS: %+v", teams)
+			}
+			var teamList []Team
+			for _, t := range teams {
+				teamList = append(teamList, Team{
+					Name:       *t.Name,
+					Permission: *t.Permission,
+				})
+			}
+
+			// save record
 			audit.Repos[*r.FullName] = Repo{
 				ID:            *r.ID,
 				FullName:      *r.FullName,
@@ -78,6 +108,7 @@ func Refresh(options config.Options) (audit Audit, err error) {
 				Watchers:      *r.WatchersCount,
 				Size:          *r.Size,
 				Updated:       r.UpdatedAt.Time,
+				Teams:         teamList,
 			}
 
 		}

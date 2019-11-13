@@ -63,6 +63,11 @@ func Details(options config.Options) {
 			fmt.Println("  watchers:    " + strconv.Itoa(repo.Watchers))
 			fmt.Println("  size:        " + strconv.Itoa(repo.Size))
 			fmt.Println("  updated:     " + repo.Updated.Format("2006-01-02 15:04:05 MST"))
+			fmt.Print("  teams:       ")
+			for _, t := range repo.Teams {
+				fmt.Print(t.Name + " (" + t.Permission + ")  ")
+			}
+			fmt.Println("")
 			for _, rule := range audit.Results[k].Rules {
 				fmt.Println("  rule:        " + rule.Name + "=" + rule.Status)
 			}

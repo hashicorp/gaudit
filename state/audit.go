@@ -30,6 +30,12 @@ type Repo struct {
 	Watchers      int
 	Size          int
 	Updated       time.Time
+	Teams         []Team
+}
+
+type Team struct {
+	Name       string
+	Permission string
 }
 
 type Result struct {

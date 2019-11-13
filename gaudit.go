@@ -68,6 +68,12 @@ func main() {
 		commands.List(options)
 	}
 
+	match, values = Command("team <team> [permission]", os.Args)
+	if match {
+		options.Args = values
+		commands.Team(options)
+	}
+
 	match, values = Command("details [filter]", os.Args)
 	if match {
 		options.Args = values

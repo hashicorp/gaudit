@@ -54,6 +54,9 @@ func CSV(options config.Options) {
 	fmt.Print(",\"Watchers\"")
 	fmt.Print(",\"Size\"")
 	fmt.Print(",\"Updated\"")
+	fmt.Print(",\"Teams Admins\"")
+	fmt.Print(",\"Teams Push\"")
+	fmt.Print(",\"Teams Pull\"")
 	for _, r := range rulesList {
 		fmt.Print(",\"" + r + "\"")
 	}
@@ -80,6 +83,31 @@ func CSV(options config.Options) {
 		fmt.Print("," + strconv.Itoa(repo.Watchers))
 		fmt.Print("," + strconv.Itoa(repo.Size))
 		fmt.Print(",\"" + repo.Updated.Format("2006-01-02 15:04:05 MST") + "\"")
+
+		// teams
+		fmt.Print(",\"")
+		for _, t := range repo.Teams {
+			if t.Permission == "admin" {
+				fmt.Print(t.Name)
+			}
+		}
+		fmt.Print("\"")
+		fmt.Print(",\"")
+		for _, t := range repo.Teams {
+			if t.Permission == "push" {
+				fmt.Print(t.Name)
+			}
+		}
+		fmt.Print("\"")
+		fmt.Print(",\"")
+		for _, t := range repo.Teams {
+			if t.Permission == "pull" {
+				fmt.Print(t.Name)
+			}
+		}
+		fmt.Print("\"")
+
+		// rules
 		for _, rule := range audit.Results[r].Rules {
 			for _, r := range rulesList {
 				if rule.Name == r {

@@ -12,6 +12,7 @@ gaudit
 
   gaudit update - Update working list of github repos
   gaudit list - List of working github repos
+	gaudit team <team> [permission] - List of repos available to a team
   gaudit diff <old> <new> - Difference since last update
   gaudit details [filter] - Detail list of github repos
   gaudit analyze - Analyze rules against working repos
@@ -80,6 +81,9 @@ NEXT
 - Added rules results to stats
 - Updated diff to exclude size/updated date
 - Updated the stats date output
+- Added list of teams on each repo
+- Added team command to list by team
+- Added team output for details and csv
 
 v0.1.1
 - Added a Stats command
