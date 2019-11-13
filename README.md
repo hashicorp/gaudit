@@ -79,6 +79,7 @@ NEXT
 - Added rules results to details
 - Added rules results to stats
 - Updated diff to exclude size/updated date
+- Updated the stats date output
 
 v0.1.1
 - Added a Stats command

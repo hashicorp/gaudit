@@ -52,10 +52,11 @@ func Stats(options config.Options) {
 	stats["total_stars"] = 0
 	stats["total_forks"] = 0
 	stats["total_watchers"] = 0
-	stats["updated_last_30"] = 0
-	stats["updated_last_60"] = 0
-	stats["updated_last_90"] = 0
-	stats["updated_last_365"] = 0
+	stats["updated_0-30_days"] = 0
+	stats["updated_31-60_days"] = 0
+	stats["updated_61-90_days"] = 0
+	stats["updated_91-365_days"] = 0
+	stats["updated_>_365_days"] = 0
 
 	// output
 	for _, k := range audit.Index {
@@ -98,19 +99,23 @@ func Stats(options config.Options) {
 		hrs := int(time.Since(repo.Updated).Hours())
 
 		if hrs <= (30 * 24) {
-			stats["updated_last_30"]++
+			stats["updated_0-30_days"]++
 		}
 
 		if hrs <= (60*24) && hrs > (30*24) {
-			stats["updated_last_60"]++
+			stats["updated_31-60_days"]++
 		}
 
 		if hrs <= (90*24) && hrs > (60*24) {
-			stats["updated_last_90"]++
+			stats["updated_61-90_days"]++
 		}
 
 		if hrs <= (365*24) && hrs > (90*24) {
-			stats["updated_last_365"]++
+			stats["updated_91-365_days"]++
+		}
+
+		if hrs > (365 * 24) {
+			stats["updated_>_365_days"]++
 		}
 
 		for _, rule := range audit.Results[k].Rules {
@@ -139,10 +144,11 @@ func Stats(options config.Options) {
 	printStat("archived", stats)
 	printStat("disabled", stats)
 	printStat("blank_license", stats)
-	printStat("updated_last_30", stats)
-	printStat("updated_last_60", stats)
-	printStat("updated_last_90", stats)
-	printStat("updated_last_365", stats)
+	printStat("updated_0-30_days", stats)
+	printStat("updated_31-60_days", stats)
+	printStat("updated_61-90_days", stats)
+	printStat("updated_91-365_days", stats)
+	printStat("updated_>_365_days", stats)
 	for _, r := range rulesList {
 		printStat(r, stats)
 	}
