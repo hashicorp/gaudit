@@ -84,6 +84,7 @@ NEXT
 - Added list of teams on each repo
 - Added team command to list by team
 - Added team output for details and csv
+- Switching Org ownership
 
 v0.1.1
 - Added a Stats command
