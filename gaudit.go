@@ -38,6 +38,12 @@ func main() {
 		options.Storage = os.Getenv("GAUDIT_STORAGE")
 	}
 
+	// Policy
+	options.Policy = "policy.md"
+	if os.Getenv("GAUDIT_POLICY") != "" {
+		options.Policy = os.Getenv("GAUDIT_POLICY")
+	}
+
 	// Rules
 	options.Rules = "rules.yml"
 	if os.Getenv("GAUDIT_RULES") != "" {

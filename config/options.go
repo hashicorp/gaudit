@@ -7,6 +7,7 @@ type Options struct {
 	GithubToken  string
 	Organization string
 	Storage      string
+	Policy       string
 	Rules        string
 	Append       string
 	Debug        bool
