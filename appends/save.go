@@ -3,7 +3,7 @@ package appends
 import (
 	"io/ioutil"
 
-	"github.com/mmcquillan/gaudit/config"
+	"github.com/hashicorp/gaudit/config"
 	"gopkg.in/yaml.v2"
 )
 

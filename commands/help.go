@@ -3,7 +3,7 @@ package commands
 import (
 	"fmt"
 
-	"github.com/mmcquillan/gaudit/config"
+	"github.com/hashicorp/gaudit/config"
 )
 
 func Help(options config.Options) {

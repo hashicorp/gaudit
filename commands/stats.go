@@ -7,10 +7,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/mmcquillan/gaudit/analyze"
-	"github.com/mmcquillan/gaudit/appends"
-	"github.com/mmcquillan/gaudit/config"
-	"github.com/mmcquillan/gaudit/state"
+	"github.com/hashicorp/gaudit/analyze"
+	"github.com/hashicorp/gaudit/appends"
+	"github.com/hashicorp/gaudit/config"
+	"github.com/hashicorp/gaudit/state"
 )
 
 func Stats(options config.Options) {

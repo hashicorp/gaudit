@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"io/ioutil"
 
-	"github.com/mmcquillan/gaudit/config"
+	"github.com/hashicorp/gaudit/config"
 )
 
 func Save(options config.Options, audit Audit) error {

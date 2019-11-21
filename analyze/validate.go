@@ -4,7 +4,7 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/mmcquillan/gaudit/config"
+	"github.com/hashicorp/gaudit/config"
 )
 
 func Validate(options config.Options, rules []Rule) error {

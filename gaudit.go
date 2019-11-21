@@ -5,8 +5,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/mmcquillan/gaudit/commands"
-	"github.com/mmcquillan/gaudit/config"
+	"github.com/hashicorp/gaudit/commands"
+	"github.com/hashicorp/gaudit/config"
 	"github.com/mmcquillan/matcher"
 )
 

@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/google/go-github/v25/github"
-	"github.com/mmcquillan/gaudit/config"
+	"github.com/hashicorp/gaudit/config"
 	"golang.org/x/oauth2"
 )
 

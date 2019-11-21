@@ -4,7 +4,7 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/mmcquillan/gaudit/config"
+	"github.com/hashicorp/gaudit/config"
 	"gopkg.in/yaml.v2"
 )
 

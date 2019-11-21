@@ -3,8 +3,8 @@ package commands
 import (
 	"fmt"
 
-	"github.com/mmcquillan/gaudit/config"
-	"github.com/mmcquillan/gaudit/state"
+	"github.com/hashicorp/gaudit/config"
+	"github.com/hashicorp/gaudit/state"
 )
 
 func Diff(options config.Options) {
