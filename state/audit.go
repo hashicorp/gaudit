@@ -31,6 +31,7 @@ type Repo struct {
 	Size          int
 	Updated       time.Time
 	Teams         []Team
+	Policy        map[string]string
 }
 
 type Team struct {

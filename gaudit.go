@@ -39,7 +39,7 @@ func main() {
 	}
 
 	// Policy
-	options.Policy = "policy.md"
+	options.Policy = ".POLICY"
 	if os.Getenv("GAUDIT_POLICY") != "" {
 		options.Policy = os.Getenv("GAUDIT_POLICY")
 	}

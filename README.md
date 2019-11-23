@@ -31,11 +31,24 @@ gaudit
 
 `GAUDIT_STORAGE` - The file to store state in (defaults to audit.store)
 
+`GAUDIT_POLICY` - Policy file to look for in a repository (defaults to .POLICY)
+
 `GAUDIT_RULES` - Rules file for analysis (defaults to rules.yml)
 
 `GAUDIT_APPEND` - Append file for annotating (defaults to append.yml)
 
 `GAUDIT_DEBUG` - Set debug mode (defaults to false)
+
+
+### Policy File
+
+To disable the policy file check, set the `GAUDIT_POLICY` value to empty.
+
+Additionally you can specify multiple policy file names by comma seperation.
+
+The policy file is a list of line seperated fields with a colon ":" to seperate keys and values.
+
+You can set comments with the # symbol.
 
 
 ### Rules File

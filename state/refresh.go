@@ -1,9 +1,11 @@
 package state
 
 import (
+	"bufio"
 	"context"
 	"log"
 	"sort"
+	"strings"
 	"time"
 
 	"github.com/google/go-github/v25/github"
@@ -89,6 +91,29 @@ func Refresh(options config.Options) (audit Audit, err error) {
 				})
 			}
 
+			// get policy
+			policy := make(map[string]string)
+			if options.Policy != "" {
+				for _, p := range strings.Split(options.Policy, ",") {
+					policyFile := strings.TrimSpace(p)
+					resp, _, _, err := client.Repositories.GetContents(context.Background(), options.Organization, *r.Name, policyFile, nil)
+					if err == nil {
+						scanner := bufio.NewScanner(strings.NewReader(*resp.Content))
+						for scanner.Scan() {
+							line := strings.TrimSpace(scanner.Text())
+							if !strings.HasPrefix(line, "#") {
+								if strings.Contains(line, ":") {
+									field := strings.Split(line, ":")
+									policy[field[0]] = field[1]
+								} else {
+									policy[line] = ""
+								}
+							}
+						}
+					}
+				}
+			}
+
 			// save record
 			audit.Repos[*r.FullName] = Repo{
 				ID:            *r.ID,
@@ -109,6 +134,7 @@ func Refresh(options config.Options) (audit Audit, err error) {
 				Size:          *r.Size,
 				Updated:       r.UpdatedAt.Time,
 				Teams:         teamList,
+				Policy:        policy,
 			}
 
 		}
