@@ -11,6 +11,7 @@ import (
 	"golang.org/x/oauth2"
 )
 
+// Run iterates over a list of repos and validates that the rule is followed.
 func Run(options config.Options, audit state.Audit, rules []Rule) error {
 
 	// github client

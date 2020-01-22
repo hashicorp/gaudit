@@ -8,6 +8,7 @@ import (
 	"github.com/hashicorp/gaudit/state"
 )
 
+// Analyze loads, validates, and analyzes a ruleset...
 func Analyze(options config.Options) {
 
 	// get last audit
@@ -34,7 +35,7 @@ func Analyze(options config.Options) {
 	}
 	fmt.Println("Validated")
 
-	// analyizing rules
+	// analyzing rules
 	fmt.Println("Analyzing rules... ")
 	err = analyze.Run(options, audit, rules)
 	if err != nil {
