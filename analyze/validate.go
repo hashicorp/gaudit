@@ -7,6 +7,8 @@ import (
 	"github.com/hashicorp/gaudit/config"
 )
 
+// Validate iterates over a []Rule and validates rule actions.
+// It returns an error if the rules file contains an invalid action.
 func Validate(options config.Options, rules []Rule) error {
 
 	valid := true
