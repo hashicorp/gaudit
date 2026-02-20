@@ -1,3 +1,6 @@
+// Copyright IBM Corp. 2019, 2020
+// SPDX-License-Identifier: MIT
+
 package appends
 
 import (
