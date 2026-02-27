@@ -10,13 +10,13 @@ for conditions in your repositories and output the results as a CSV.
 ```
 gaudit
 
-  gaudit update - Update working list of github repos
+  gaudit update - Updates working list of github repos
   gaudit list - List of working github repos
-	gaudit team <team> [permission] - List of repos available to a team
+  gaudit team <team> [permission] - List of repos available to a team
   gaudit diff <old> <new> - Difference since last update
   gaudit details [filter] - Detail list of github repos
-  gaudit analyze - Analyze rules against working repos
-  gaudit results [--verbose] - Show results of analysis
+  gaudit analyze - Analyzes rules against working repos
+  gaudit results [--verbose] - Shows results of analysis
   gaudit append - Creates or updates the append file
   gaudit stats - Summarizes statistics data on the audit
   gaudit csv - Outputs to csv format
