@@ -1,4 +1,4 @@
-// Copyright IBM Corp. 2019, 2020
+// Copyright IBM Corp. 2019, 2026
 // SPDX-License-Identifier: MIT
 
 package config
